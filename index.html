@@ -15,9 +15,9 @@
          #about     About       — photo, bio and pull quote
     3. <footer>  .site-footer   — contact call-to-action and bottom bar
 
-  Photo placeholders: every grey box is a <div class="ph"> with a label.
-  To add a real photo, replace that <div> with
-  <img class="ph" src="photos/your-file.jpg" alt="Describe the photo">.
+  Photos: every image is an <img class="ph"> (currently images/camera.jpg).
+  To change one, edit its src and alt. style="--ratio:..." sets its shape;
+  --tone is the colour shown while the image loads.
 -->
 <html lang="en">
 <head>
@@ -115,18 +115,6 @@
       width: 100%;
       object-fit: cover;
     }
-    .ph-label {
-      position: absolute;
-      left: 16px;
-      bottom: 14px;
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #2A241E;
-    }
-    .ph-label.on-dark  { color: var(--paper); }
-    .ph-label.on-mid   { color: var(--ink); }
 
     /* Photo caption under a placeholder, e.g. "Fr. 07 — Portrait" */
     figure { display: flex; flex-direction: column; gap: 12px; }
@@ -230,7 +218,6 @@
     }
     .strip-frames figure { position: relative; gap: 10px; }
     .strip-frames .ph { height: 176px; }
-    .strip-frames .ph-label { left: 12px; bottom: 10px; font-size: 10px; }
     .strip-frames figcaption { font-family: var(--mono); font-size: 11px; color: var(--amber); letter-spacing: 0.1em; }
     /* Frame 14: grease-pencil circle + "print this one" note */
     .strip-circle { left: -11.56%; top: -16px; width: 126.56%; height: 222px; }
@@ -280,7 +267,6 @@
     .tigray-hero .ph { height: 560px; }
     .tigray-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
     .tigray-grid .ph { height: 200px; }
-    .tigray-grid .ph-label { left: 14px; bottom: 12px; font-size: 10px; color: var(--rule); }
 
     /* ==========================================================
        9. FILM (#film) — credits table + preview panel
@@ -361,7 +347,8 @@
       position: absolute; left: 16px; top: 14px;
       font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--amber);
     }
-    .film-still .ph-label { right: 16px; color: var(--rule); }
+    .film-still-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .film-still-count { z-index: 1; }
     .film-preview h3 { font-family: var(--serif); font-weight: 400; font-size: 32px; line-height: 1.1; }
     .film-preview-meta { font-family: var(--mono); font-size: 12px; line-height: 1.6; color: var(--body); }
     .film-preview-link {
@@ -560,20 +547,20 @@
         <ol class="strip-frames">
           <li>
             <figure>
-              <div class="ph" style="--tone:#B9AE9E"><span class="ph-label">[ Portrait ]</span></div>
+              <img class="ph" src="images/camera.jpg" alt="Portrait" style="--tone:#B9AE9E">
               <figcaption>▸ 12 &nbsp;&nbsp; HB 400</figcaption>
             </figure>
           </li>
           <li>
             <figure>
-              <div class="ph" style="--tone:#9E9282"><span class="ph-label on-mid">[ WIFT Toronto ]</span></div>
+              <img class="ph" src="images/camera.jpg" alt="WIFT Toronto" style="--tone:#9E9282">
               <figcaption>▸ 13</figcaption>
             </figure>
           </li>
           <li>
             <!-- Frame 14 is "circled" with a grease pencil and annotated -->
             <figure>
-              <div class="ph" style="--tone:#C9BCA6"><span class="ph-label">[ Tigray, 2017 ]</span></div>
+              <img class="ph" src="images/camera.jpg" alt="Tigray, 2017" style="--tone:#C9BCA6">
               <figcaption>▸ 14 &nbsp;&nbsp; HB 400</figcaption>
               <svg class="pen-mark strip-circle" viewBox="0 0 270 222" preserveAspectRatio="none" aria-hidden="true">
                 <path d="M 46 24 C 120 2, 236 8, 256 64 C 274 118, 244 196, 136 206 C 42 214, 6 166, 12 104 C 16 54, 66 26, 168 16" vector-effect="non-scaling-stroke"/>
@@ -583,19 +570,19 @@
           </li>
           <li>
             <figure>
-              <div class="ph" style="--tone:#857969"><span class="ph-label on-dark">[ The Modern Mentor ]</span></div>
+              <img class="ph" src="images/camera.jpg" alt="The Modern Mentor" style="--tone:#857969">
               <figcaption>▸ 15</figcaption>
             </figure>
           </li>
           <li>
             <figure>
-              <div class="ph" style="--tone:#AFA391"><span class="ph-label on-mid">[ On set ]</span></div>
+              <img class="ph" src="images/camera.jpg" alt="On set" style="--tone:#AFA391">
               <figcaption>▸ 16 &nbsp;&nbsp; HB 400</figcaption>
             </figure>
           </li>
           <li>
             <figure>
-              <div class="ph" style="--tone:#D2C7B6"><span class="ph-label">[ Portrait ]</span></div>
+              <img class="ph" src="images/camera.jpg" alt="Portrait" style="--tone:#D2C7B6">
               <figcaption>▸ 17</figcaption>
             </figure>
           </li>
@@ -622,12 +609,12 @@
       <!-- Collage: --x/--y = position, --w = width (all % of the box), --ratio = photo shape -->
       <div class="collage">
         <figure style="--x:0%; --y:0%; --w:37.5%">
-          <div class="ph" style="--tone:#B9AE9E; --ratio:480/620"><span class="ph-label">[ Photo — Portrait ]</span></div>
+          <img class="ph" src="images/camera.jpg" alt="Portrait" style="--tone:#B9AE9E; --ratio:480/620">
           <figcaption class="caption">Fr. 07 — Portrait</figcaption>
         </figure>
 
         <figure style="--x:43.75%; --y:12%; --w:28.12%">
-          <div class="ph" style="--tone:#9E9282; --ratio:360/460"><span class="ph-label on-mid">[ Photo — WIFT Toronto ]</span></div>
+          <img class="ph" src="images/camera.jpg" alt="WIFT Toronto" style="--tone:#9E9282; --ratio:360/460">
           <figcaption class="caption">Fr. 08 — Women In Film Toronto, live social coverage</figcaption>
         </figure>
 
@@ -637,22 +624,22 @@
         </svg>
 
         <figure style="--x:78.12%; --y:4%; --w:21.88%">
-          <div class="ph" style="--tone:#CFC4B3; --ratio:280/340"><span class="ph-label">[ Photo — Headshot ]</span></div>
+          <img class="ph" src="images/camera.jpg" alt="Headshot" style="--tone:#CFC4B3; --ratio:280/340">
           <figcaption class="caption">Fr. 09 — Headshot</figcaption>
         </figure>
 
         <figure style="--x:84.38%; --y:46%; --w:15.62%">
-          <div class="ph" style="--tone:#857969; --ratio:200/260"><span class="ph-label on-dark">[ Photo — Candid ]</span></div>
+          <img class="ph" src="images/camera.jpg" alt="Candid" style="--tone:#857969; --ratio:200/260">
           <figcaption class="caption">Fr. 10 — Candid</figcaption>
         </figure>
 
         <figure style="--x:9.375%; --y:70%; --w:25%">
-          <div class="ph" style="--tone:#AFA391; --ratio:320/220"><span class="ph-label on-mid">[ Photo — Event ]</span></div>
+          <img class="ph" src="images/camera.jpg" alt="Event" style="--tone:#AFA391; --ratio:320/220">
           <figcaption class="caption">Fr. 11 — WIFT Toronto</figcaption>
         </figure>
 
         <figure style="--x:43.75%; --y:66%; --w:34.38%">
-          <div class="ph" style="--tone:#C4B8A5; --ratio:440/300"><span class="ph-label">[ Photo — Portrait, landscape ]</span></div>
+          <img class="ph" src="images/camera.jpg" alt="Portrait, landscape" style="--tone:#C4B8A5; --ratio:440/300">
           <figcaption class="caption">Fr. 12 — Portrait</figcaption>
         </figure>
       </div>
@@ -675,17 +662,17 @@
         </div>
 
         <figure class="tigray-hero">
-          <div class="ph" style="--tone:#4A4238"><span class="ph-label on-dark">[ Photo — Women resting with water, Tigray ]</span></div>
+          <img class="ph" src="images/camera.jpg" alt="Women resting with water, Tigray" style="--tone:#4A4238">
           <figcaption class="caption">Fr. 01 — Tigray, 2017</figcaption>
         </figure>
       </div>
 
       <!-- Four supporting photos -->
       <ul class="tigray-grid">
-        <li><figure><div class="ph" style="--tone:#3A332C"><span class="ph-label">[ Photo ]</span></div><figcaption class="caption">Fr. 02</figcaption></figure></li>
-        <li><figure><div class="ph" style="--tone:#564D42"><span class="ph-label">[ Photo ]</span></div><figcaption class="caption">Fr. 03</figcaption></figure></li>
-        <li><figure><div class="ph" style="--tone:#443C33"><span class="ph-label">[ Photo ]</span></div><figcaption class="caption">Fr. 04</figcaption></figure></li>
-        <li><figure><div class="ph" style="--tone:#5E5448"><span class="ph-label">[ Photo ]</span></div><figcaption class="caption">Fr. 05</figcaption></figure></li>
+        <li><figure><img class="ph" src="images/camera.jpg" alt="Tigray, 2017" style="--tone:#3A332C"><figcaption class="caption">Fr. 02</figcaption></figure></li>
+        <li><figure><img class="ph" src="images/camera.jpg" alt="Tigray, 2017" style="--tone:#564D42"><figcaption class="caption">Fr. 03</figcaption></figure></li>
+        <li><figure><img class="ph" src="images/camera.jpg" alt="Tigray, 2017" style="--tone:#443C33"><figcaption class="caption">Fr. 04</figcaption></figure></li>
+        <li><figure><img class="ph" src="images/camera.jpg" alt="Tigray, 2017" style="--tone:#5E5448"><figcaption class="caption">Fr. 05</figcaption></figure></li>
       </ul>
     </section>
 
@@ -834,7 +821,7 @@
         <aside class="film-preview" aria-live="polite">
           <div class="film-still">
             <span class="film-still-count">▸ <span data-preview="no">01</span> / <span data-preview="total">18</span></span>
-            <span class="ph-label">[ Still — <span data-preview="title">The Modern Mentor</span> ]</span>
+            <img class="film-still-img" src="images/camera.jpg" alt="">
           </div>
           <h3 data-preview="title">The Modern Mentor</h3>
           <p class="film-preview-meta"><span data-preview="format">Documentary</span><br><span data-preview="role">Director</span></p>
@@ -850,7 +837,7 @@
     <section class="section about" id="about">
 
       <figure class="about-photo">
-        <div class="ph" style="--tone:#B9AE9E"><span class="ph-label">[ Photo — Hermonie ]</span></div>
+        <img class="ph" src="images/camera.jpg" alt="Hermonie" style="--tone:#B9AE9E">
       </figure>
 
       <div class="about-text">
