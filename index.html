@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-  Hermonie Berhan — Photography & Film
+  Moved Mountains Media — Photography & Film
   ------------------------------------------------------------
   Single-page portfolio. Plain HTML + one <style> block + a few lines of
   vanilla JS for the interactive credits index. No build step, no frameworks.
@@ -23,8 +23,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hermonie Berhan — Photography &amp; Film</title>
-  <meta name="description" content="Hermonie Berhan — photographer and filmmaker in Toronto. Portrait, documentary, events and film work.">
+  <title>Moved Mountains Media — Photography &amp; Film</title>
+  <meta name="description" content="Moved Mountains Media — photographer and filmmaker in Toronto. Portrait, documentary, events and film work.">
 
   <!-- Web fonts: Instrument Serif (headlines), Instrument Sans (body), IBM Plex Mono (labels) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -175,9 +175,10 @@
       padding: 0 72px;
       font-family: var(--serif);
       font-weight: 400;
-      font-size: min(188px, calc((100vw - 144px) / 5.9));  /* keeps the name on one line */
+      font-size: clamp(64px, calc((100vw - 144px) / 6.25), 150px);
       line-height: 0.9;
       letter-spacing: -0.035em;
+      max-width: 100%;
     }
     .hero-title em { font-style: italic; }
     .hero-row {
@@ -428,7 +429,7 @@
       /* Hero */
       .hero { min-height: 0; padding-top: 32px; }
       .hero-kicker { gap: 16px; flex-wrap: wrap; }
-      .hero-title { padding: 0 16px; margin-top: 20px; font-size: calc((100vw - 32px) / 5.9); }
+      .hero-title { padding: 0 16px; margin-top: 20px; font-size: clamp(48px, calc((100vw - 32px) / 5.2), 96px); }
       .hero-row { margin-top: 24px; margin-bottom: 48px; flex-direction: column; align-items: flex-start; gap: 28px; }
       .lede { font-size: 24px; }
       .hero-meta { min-width: 0; }
@@ -496,7 +497,7 @@
        SITE HEADER — logo/name, section links, contact button
        ============================================================ -->
   <header class="site-header">
-    <a class="brand" href="#top">Hermonie Berhan</a>
+    <a class="brand" href="#top">Moved Mountains Media</a>
 
     <!-- Main navigation: each link jumps to a section id below -->
     <nav class="site-nav" aria-label="Sections">
@@ -526,7 +527,7 @@
       </p>
 
       <!-- The page's main heading (only one <h1> per page) -->
-      <h1 class="hero-title">Hermonie <em>Berhan</em></h1>
+      <h1 class="hero-title">Moved Mountains <em>Media</em></h1>
 
       <div class="hero-row">
         <!-- Intro sentence -->
@@ -878,7 +879,7 @@
 
     <!-- Bottom bar: copyright, sign-off, back-to-top link -->
     <div class="footer-bar">
-      <small>© Hermonie Berhan</small>
+      <small>© Moved Mountains Media</small>
       <span>End of roll 01</span>
       <a href="#top">Back to frame 01 ↑</a>
     </div>
